@@ -11,7 +11,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder7</h1>
+                <h1>PlateUp Template Builder8</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -159,11 +159,9 @@
             };
             
             const TESTZIP = async() => {
-                let zip = new JSZip();
+            
 
-                zip.file(`lobster.fbx`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/Assets/Models/lobster.fbx`));
-
-                return zip;
+                return await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/Assets/Models/lobster.fbx`);
             };
 
             const createZipForECS = async() => {
