@@ -11,7 +11,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder8</h1>
+                <h1>PlateUp Template Builder9</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -81,9 +81,7 @@
         <script type="text/javascript" src="./gitFiles.js"></script>
         <script type="text/javascript">
             const SETTINGS_KEY = "settings";
-            const URL_PREFIX = "https://starfluxmods.github.io/mod-template-trials/"; // change to "https://yourghpage.github.io/" when testing locally
-
-            //https://raw.githubusercontent.com/StarFluxMods/plateup-template-builder/dev/bin/templates/ecs/Mod.cs
+            const URL_PREFIX = ""; // change to "https://yourghpage.github.io/" when testing locally
 
             const standaloneElement = document.querySelector("#project-type-standalone");
             const kitchenLibElement = document.querySelector("#project-type-kitchenlib");
@@ -150,18 +148,11 @@
                     return createZipForKitchenKibAssets();
                 }
                 else if (kitchenLibExampleElement.checked) {
-                    // return createZipForKitchenKibExample();\
-                    return TESTZIP();
+                    return createZipForKitchenKibExample();
                 }
 
                 return null;
                 
-            };
-            
-            const TESTZIP = async() => {
-            
-
-                return await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/Assets/Models/lobster.fbx`);
             };
 
             const createZipForECS = async() => {
@@ -280,8 +271,6 @@
 
                 const unityPath = `${modName}/UnityProject - ${modName}/`;
 
-                // debug log message
-
                 for (const filename of kitchenlibexample) {
                     if (filename.incudes("template.gitignore"))
                     {
@@ -319,16 +308,6 @@
 
                 return zip;
             }
-
-            const replacePlaceholdersInProjectFile = (projectFile) => projectFile.replaceAll("UnityProject", `UnityProject - ${namespaceElement.value}`);
-
-            const addGitFilesIfNeeded = async (zip) => {
-                if (isChecked(generateGitRepoElement)) {
-                    for (const filename of gitFiles) {
-                        zip.file(`.git/${filename}`, await fetchText(`bin/extras/_git/${filename}`));
-                    }
-                }
-            };
 
             const fetchText = async path => await (await fetch(`${URL_PREFIX}/${path}`)).text();
 
