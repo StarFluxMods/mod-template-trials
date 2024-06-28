@@ -11,7 +11,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder6</h1>
+                <h1>PlateUp Template Builder7</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -196,7 +196,7 @@
                 let zip = new JSZip();
                 const modName = modNameStripped();
 
-                let gitignore = await fetchText(`bin/templates/kitchenlib/.gitignore`);
+                let gitignore = await fetchText(`bin/templates/kitchenlib/template.gitignore`);
                 let modCs = await fetchText(`bin/templates/kitchenlib/Mod.cs`);
                 let projectFile = await fetchText(`bin/templates/kitchenlib/project.csproj`);
 
@@ -222,7 +222,7 @@
                 let zip = new JSZip();
                 const modName = modNameStripped();
 
-                let gitignore = await fetchText(`bin/templates/kitchenlib-assets/.gitignore`);
+                let gitignore = await fetchText(`bin/templates/kitchenlib-assets/template.gitignore`);
                 let modCs = await fetchText(`bin/templates/kitchenlib-assets/Mod.cs`);
                 let projectFile = await fetchText(`bin/templates/kitchenlib-assets/project.csproj`);
 
@@ -242,7 +242,13 @@
                 const unityPath = `${modName}/UnityProject - ${modName}/`;
 
                 for (const filename of kitchenlibassets) {
-                    zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-assets/UnityProject - KitchenMyMod/${filename}`));
+                    if (filename.incudes("template.gitignore"))
+                    {
+                        zip.file(`${unityPath}.gitignore`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                    }else
+                    {
+                        zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                    }
                 }
 
                 if (ShouldGenerateChangelogs())
@@ -257,7 +263,7 @@
                 let zip = new JSZip();
                 const modName = modNameStripped();
 
-                let gitignore = await fetchText(`bin/templates/kitchenlib-example/.gitignore`);
+                let gitignore = await fetchText(`bin/templates/kitchenlib-example/template.gitignore`);
                 let modCs = await fetchText(`bin/templates/kitchenlib-example/Mod.cs`);
                 let projectFile = await fetchText(`bin/templates/kitchenlib-example/project.csproj`);
 
@@ -279,7 +285,13 @@
                 // debug log message
 
                 for (const filename of kitchenlibexample) {
-                    zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                    if (filename.incudes("template.gitignore"))
+                    {
+                        zip.file(`${unityPath}.gitignore`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                    }else
+                    {
+                        zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                    }
                 }
                 for (const filename of kitchenlibexamplecustoms) {
                     let file = await fetchText(`bin/templates/kitchenlib-example/Customs/${filename}`);
