@@ -14,7 +14,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder17</h1>
+                <h1>PlateUp Template Builder18</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -330,6 +330,9 @@
                 } else if (filename.endsWith(".gitignore")) {
                     const data = await fetchText(`${urlPath}/${filename}`);
                     zip.file(`${path}.gitignore`, data);
+                } else if (filename.endsWith(".ogg")) {
+                    const oggData = await fetchOggData(`${URL_PREFIX}/${urlPath}/${filename}`);
+                    zip.file(`${path}${filename}`, oggData);
                 } else {
                     const data = await fetchText(`${urlPath}/${filename}`);
                     zip.file(`${path}${filename}`, data);
@@ -344,6 +347,20 @@
         }
         const blob = await response.blob();
         return blob;
+    } catch (error) {
+        console.error(`Error fetching ${filename}:`, error);
+        return null;
+    }
+};
+
+const fetchOggData = async (filename) => {
+    try {
+        const response = await fetch(`${filename}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${filename}: ${response.status} ${response.statusText}`);
+        }
+        const arrayBuffer = await response.arrayBuffer();
+        return new Blob([arrayBuffer], { type: 'audio/ogg' });
     } catch (error) {
         console.error(`Error fetching ${filename}:`, error);
         return null;
