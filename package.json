@@ -1,0 +1,11 @@
+{
+  "name": "plateup-mod-template",
+  "version": "1.0.0",
+  "description": "Builds a template for a new PlateUp! mod.",
+  "main": "bin/index.js",
+  "bin": {
+    "plateupmod": "bin/index.js"
+  },
+  "author": "StarFluxGames",
+  "license": "MIT"
+}
