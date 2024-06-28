@@ -11,7 +11,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder4</h1>
+                <h1>PlateUp Template Builder5</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -170,7 +170,7 @@
                 let zip = new JSZip();
                 const modName = modNameStripped();
 
-                let gitignore = await fetchText(`bin/templates/ecs/.gitignore`);
+                let gitignore = await fetchText(`bin/templates/ecs/_.gitignore`);
                 let modCs = await fetchText(`bin/templates/ecs/Mod.cs`);
                 let projectFile = await fetchText(`bin/templates/ecs/project.csproj`);
 
