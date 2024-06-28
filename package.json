@@ -6,6 +6,9 @@
   "bin": {
     "plateupmod": "bin/index.js"
   },
+  "scripts": {
+    "build-gh": "node ./web/build-ghpage.js"
+  },
   "author": "StarFluxGames",
   "license": "MIT"
 }
