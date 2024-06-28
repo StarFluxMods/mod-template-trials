@@ -10,5 +10,8 @@
     "build-gh": "node ./web/build-ghpage.js"
   },
   "author": "StarFluxGames",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "fflate": "^0.8.2"
+  }
 }
