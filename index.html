@@ -11,7 +11,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder11</h1>
+                <h1>PlateUp Template Builder12</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -230,12 +230,13 @@
                 const unityPath = `${modName}/UnityProject - ${modName}/`;
 
                 for (const filename of kitchenlibassets) {
-                    if (filename.incudes("template.gitignore"))
+                    console.log(filename);
+                    if (filename == "template.gitignore")
                     {
-                        zip.file(`${unityPath}.gitignore`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                        zip.file(`${unityPath}.gitignore`, await fetchText(`bin/templates/kitchenlib-assets/UnityProject - KitchenMyMod/${filename}`));
                     }else
                     {
-                        zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
+                        zip.file(`${unityPath}${filename}`, await fetchText(`bin/templates/kitchenlib-assets/UnityProject - KitchenMyMod/${filename}`));
                     }
                 }
 
@@ -271,7 +272,8 @@
                 const unityPath = `${modName}/UnityProject - ${modName}/`;
 
                 for (const filename of kitchenlibexample) {
-                    if (filename.incudes("template.gitignore"))
+                    console.log(filename);
+                    if (filename == "template.gitignore")
                     {
                         zip.file(`${unityPath}.gitignore`, await fetchText(`bin/templates/kitchenlib-example/UnityProject - KitchenMyMod/${filename}`));
                     }else
