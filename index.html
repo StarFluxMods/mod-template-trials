@@ -198,7 +198,7 @@
 
                 for (const filename of kitchenlibexamplecustoms) {
                     let file = await fetchText(`bin/templates/kitchenlib-example/Customs/${filename}`);
-                    file = file.replaceAll("KitchenMyMod", modName);
+                    file = file.replaceAll("KitchenMyMod", namespaceElement.value);
                     zip.file(`${modName}/Customs/${filename}`, file);
                 }
 
@@ -228,12 +228,12 @@
                     .replaceAll("0.1.0", versionElement.value);
             };
 
-            const replacePlaceholdersInGitignore = (gitignore, modName) => {
-                return gitignore.replaceAll("KitchenMyMod", modName);  
+            const replacePlaceholdersInGitignore = (gitignore) => {
+                return gitignore.replaceAll("KitchenMyMod", namespaceElement.value);  
             };
 
-            const replacePlaceholdersInProjectFile = (projectFile, modName) => {
-                return projectFile.replaceAll("KitchenMyMod", modName);  
+            const replacePlaceholdersInProjectFile = (projectFile) => {
+                return projectFile.replaceAll("KitchenMyMod", namespaceElement.value);  
             };
 
             const addUnityProjectToZip = async (zip, modName, pathPrefix, files) => {
