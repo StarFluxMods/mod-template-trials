@@ -237,7 +237,7 @@
             };
 
             const addUnityProjectToZip = async (zip, modName, pathPrefix, files) => {
-                const unityPath = `${modName}/UnityProject - ${modName}/`;
+                const unityPath = `${modName}/UnityProject - ${namespaceElement.value}/`;
                 for (const filename of files) {
                     await handleFiles(zip, unityPath, pathPrefix, filename);
                 }
