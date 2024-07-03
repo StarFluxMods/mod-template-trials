@@ -207,7 +207,7 @@
 
             const addGitignoreToZip = async (zip, modName, pathToGitignore) => {
                 const gitignore = await fetchText(pathToGitignore);
-                zip.file(`${modName}/.gitignore`, replacePlaceholdersInGitignore(gitignore));
+                zip.file(`${modName}/.gitignore`, replacePlaceholdersInGitignore(gitignore, modName));
             };
 
             const addModCsToZip = async (zip, modName, pathToModCs) => {
@@ -217,7 +217,7 @@
 
             const addProjectFileToZip = async (zip, modName, pathToProjectFile) => {
                 const projectFile = await fetchText(pathToProjectFile);
-                zip.file(`${modName}/${modName}.csproj`, replacePlaceholdersInProjectFile(projectFile));
+                zip.file(`${modName}/${modName}.csproj`, replacePlaceholdersInProjectFile(projectFile, modName));
             };
 
             const replacePlaceholdersInModCs = (modCs) => {
@@ -228,12 +228,12 @@
                     .replaceAll("0.1.0", versionElement.value);
             };
 
-            const replacePlaceholdersInGitignore = (gitignore) => {
+            const replacePlaceholdersInGitignore = (gitignore, modName) => {
                 return gitignore.replaceAll("KitchenMyMod", modName);  
             };
 
-            const replacePlaceholdersInProjectFile = (projectFile) => {
-                return projectFile.replaceAll("KitchenMyMod", projectFile);  
+            const replacePlaceholdersInProjectFile = (projectFile, modName) => {
+                return projectFile.replaceAll("KitchenMyMod", modName);  
             };
 
             const addUnityProjectToZip = async (zip, modName, pathPrefix, files) => {
