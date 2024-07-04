@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssetBundlePath>UnityProject - MyMod\content\mod.assets</AssetBundlePath>
 	</PropertyGroup>
 
 	<ItemGroup>

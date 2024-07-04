@@ -14,7 +14,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder4</h1>
+                <h1>PlateUp Template Builder11</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -60,7 +60,7 @@
                     <label for="metadata-version">Version</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" type="text" id="metadata-nugetversion" value="0.11.5" required />
+                    <input class="form-control" type="text" id="metadata-nugetversion" value="1.11.5" required />
                     <label for="metadata-nugetversion">Nuget Version - Don't change unless required</label>
                 </div>
                 <div class="form-check form-switch mb-3">
@@ -85,6 +85,7 @@
         <script type="text/javascript" src="./kitchenlibassets.js"></script>
         <script type="text/javascript" src="./kitchenlibexample.js"></script>
         <script type="text/javascript" src="./kitchenlibexamplecustoms.js"></script>
+        <script type="text/javascript" src="./bin/utils/global-references.js"></script>
         <script type="text/javascript">
             const SETTINGS_KEY = "settings";
             const URL_PREFIX = "https://starfluxmods.github.io/mod-template-trials/"; // change to "https://yourghpage.github.io/" when testing locally
@@ -104,6 +105,8 @@
             const generateGitRepoElement = document.querySelector("#other-settings-create-git-repo");
             const form = document.querySelector("form");
             const generateButton = document.querySelector("#generate");
+
+            nugetVersionElement.value = NUGET_VERSION;
 
             const authorStripped = () => authorElement.value.toLowerCase().replace(/[^a-z0-9]/gi, "");
             const modNameStripped = () => modNameElement.value.replace(/[^a-z0-9]/gi, "");
