@@ -14,7 +14,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder</h1>
+                <h1>PlateUp Template Builder1</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -59,6 +59,10 @@
                     <input class="form-control" type="text" id="metadata-version" value="0.1.0" required />
                     <label for="metadata-version">Version</label>
                 </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="metadata-nugetversion" value="0.11.5" required />
+                    <label for="metadata-nugetversion">Nuget Version - Don't change unless required</label>
+                </div>
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input saveable" type="checkbox" id="metadata-generate-changelogs" checked />
                     <label class="form-check-label" for="metadata-generate-changelogs">Generate Changelog Folders</label>
@@ -96,6 +100,7 @@
             const useKitchenPrefixElement = document.querySelector("#metadata-use-kitchen-prefix");
             const generateChangelogElement = document.querySelector("#metadata-generate-changelogs");
             const versionElement = document.querySelector("#metadata-version");
+            const nugetVersionElement = document.querySelector("#metadata-nugetversion");
             const generateGitRepoElement = document.querySelector("#other-settings-create-git-repo");
             const form = document.querySelector("form");
             const generateButton = document.querySelector("#generate");
@@ -229,15 +234,16 @@
             };
 
             const replacePlaceholdersInGitignore = (gitignore) => {
-                return gitignore.replaceAll("KitchenMyMod", namespaceElement.value);  
+                return gitignore.replaceAll("MyMod", modName);  
             };
 
             const replacePlaceholdersInProjectFile = (projectFile) => {
-                return projectFile.replaceAll("KitchenMyMod", namespaceElement.value);  
+                return projectFile.replaceAll("NUGET_VERSION", nugetVersionElement.value)
+                .replaceAll("MyMod", modName);  
             };
 
             const addUnityProjectToZip = async (zip, modName, pathPrefix, files) => {
-                const unityPath = `${modName}/UnityProject - ${namespaceElement.value}/`;
+                const unityPath = `${modName}/UnityProject - ${modName}/`;
                 for (const filename of files) {
                     await handleFiles(zip, unityPath, pathPrefix, filename);
                 }
