@@ -14,7 +14,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder3</h1>
+                <h1>PlateUp Template Builder4</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -187,7 +187,7 @@
                 await addGitignoreToZip(zip, modName, `bin/templates/kitchenlib-assets/template.gitignore`);
                 await addModCsToZip(zip, modName, `bin/templates/kitchenlib-assets/Mod.cs`);
                 await addProjectFileToZip(zip, modName, `bin/templates/kitchenlib-assets/project.csproj`);
-                await addUnityProjectToZip(zip, modName, `bin/templates/kitchenlib-assets/UnityProject - KitchenMyMod`, kitchenlibassets);
+                await addUnityProjectToZip(zip, modName, `bin/templates/kitchenlib-assets/UnityProject - MyMod`, kitchenlibassets);
 
                 return await addChangelogsToZipIfNeeded(zip);
             };
@@ -199,7 +199,7 @@
                 await addGitignoreToZip(zip, modName, `bin/templates/kitchenlib-example/template.gitignore`);
                 await addModCsToZip(zip, modName, `bin/templates/kitchenlib-example/Mod.cs`);
                 await addProjectFileToZip(zip, modName, `bin/templates/kitchenlib-example/project.csproj`);
-                await addUnityProjectToZip(zip, modName, `bin/templates/kitchenlib-example/UnityProject - KitchenMyMod`, kitchenlibexample);
+                await addUnityProjectToZip(zip, modName, `bin/templates/kitchenlib-example/UnityProject - MyMod`, kitchenlibexample);
 
                 for (const filename of kitchenlibexamplecustoms) {
                     let file = await fetchText(`bin/templates/kitchenlib-example/Customs/${filename}`);
