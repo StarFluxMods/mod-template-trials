@@ -14,7 +14,7 @@
     <body class="pt-5">
         <div class="container">
             <form>
-                <h1>PlateUp Template Builder2</h1>
+                <h1>PlateUp Template Builder3</h1>
     
                 <h2>Project Type</h2>
                 <div class="form-check mb-3">
@@ -237,7 +237,7 @@
                 return gitignore.replaceAll("MyMod", modName);  
             };
 
-            const replacePlaceholdersInProjectFile = (projectFile) => {
+            const replacePlaceholdersInProjectFile = (projectFile, modName) => {
                 return projectFile.replaceAll("NUGET_VERSION", nugetVersionElement.value)
                 .replaceAll("MyMod", modName);  
             };
